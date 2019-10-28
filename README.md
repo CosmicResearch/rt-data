@@ -33,7 +33,10 @@ make
 ## Dependencies
 
 ```
-sudo apt install libcurl4-gnutls-dev gpsd libqgpsmm23 libqgpsmm-dev libgps libgps-dev
+sudo apt install -y g++-7 cmake make libcurl4-gnutls-dev libqgpsmm-dev libgps-dev
+libcppunit-dev
+
+See how to install g3log: https://github.com/CosmicResearch/g3log
 ```
 
 ## License
