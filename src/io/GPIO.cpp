@@ -53,7 +53,7 @@ void GPIO::close() {
 
 PinStatus GPIO::read() {
 	char path[50];
-	snprintf(path, 50, "/sys/class/gpio/gpio%d/value", pin);
+	snprintf(path, 50, "/sys/class/gpio/PA%d/value", pin);
 	int fd = ::open(path, O_RDONLY);
 	if (fd < 0) {
 		throw std::runtime_error("Failed to open GPIO for reading");
@@ -69,7 +69,7 @@ PinStatus GPIO::read() {
 
 void GPIO::write(PinStatus value) {
 	char path[50];
-	snprintf(path, 50, "/sys/class/gpio/gpio%d/value", pin);
+	snprintf(path, 50, "/sys/class/gpio/PA%d/value", pin);
 	char write_value[3];
 	snprintf(write_value, 3, "%d", (int)value);
 	int fd = ::open(path, O_WRONLY);
@@ -85,7 +85,7 @@ void GPIO::write(PinStatus value) {
 
 void GPIO::set_mode(Mode mode) {
 	char path[50];
-	snprintf(path, 50, "/sys/class/gpio/gpio%d/direction", pin);
+	snprintf(path, 50, "/sys/class/gpio/PA%d/direction", pin);
 	int fd = ::open(path, O_WRONLY);
 	if (fd < 0) {
 		throw std::runtime_error("Failed to open GPIO for changing mode");
