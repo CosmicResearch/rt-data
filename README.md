@@ -7,7 +7,7 @@
 rt-data is a data acquisition framework for embedded systems.
 
 ## Build instructions
-
+_Use --recurse-submodules option when clonning this repository_
 ```
 mkdir build && cd build
 cmake ..
