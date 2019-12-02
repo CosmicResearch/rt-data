@@ -33,7 +33,7 @@ void Application::setup() {
       10000000, // sampling rate
       0x6B // i2c address
     );
-    //writer.open();
+    writer.open();
    
     manager.add_sensor(sensor);
     broker.subscribe("xsens-test", std::make_shared<LambdaListener>([](std::string topic, std::shared_ptr<Data> data) {
