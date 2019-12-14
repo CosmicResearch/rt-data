@@ -125,12 +125,13 @@ public:
     
     /**
      * How many bytes are available to read?
-     * @returns int: the number of bytes available to read.
+     * @returns int the number of bytes available to read.
      */
     int available();
     
     /**
      * Prints data to the serial port as human-readable ASCII text.
+     * @param format C string that contains the text to be written to the stream.
      */
     void print(const char* format);
 
