@@ -104,6 +104,14 @@ void Serial::receive(std::vector<uint8_t>& out, size_t size) {
     }
 }
 
+int Serial::available() {
+    int ret;
+    if (ioctl(tty_fd, FIONREAD, &ret) < 0) {
+        throw std::runtime_error("Error requesting for available data");
+    }
+    return ret;
+}
+
 speed_t Serial::convert_baud_rate(const int baudRate) {
     speed_t res;
     switch (baudRate) {

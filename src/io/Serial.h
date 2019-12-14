@@ -121,6 +121,11 @@ public:
      * @returns Whether or not the Serial port is closed
      */
     bool is_closed();
+    /**
+     * How many bytes are available to read?
+     * @returns int: the number of bytes available to read.
+     */
+    int available();
 
 private:
 
