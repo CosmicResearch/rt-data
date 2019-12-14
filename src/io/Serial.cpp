@@ -105,11 +105,24 @@ void Serial::receive(std::vector<uint8_t>& out, size_t size) {
 }
 
 int Serial::available() {
+    if (!isopen) {
+        throw std::runtime_error("Serial port is not open");
+    }
     int ret;
     if (ioctl(tty_fd, FIONREAD, &ret) < 0) {
         throw std::runtime_error("Error requesting for available data");
     }
     return ret;
+}
+
+void Serial::print(const char* format) {
+    if (!isopen) {
+        throw std::runtime_error("Serial port is not open");
+    }
+    int print_count = fprintf(tty_fd, format);
+    if (print_count < 0) {
+        throw std::runtime_error("Error while printing to serial port");
+    }
 }
 
 speed_t Serial::convert_baud_rate(const int baudRate) {

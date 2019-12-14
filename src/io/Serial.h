@@ -26,6 +26,7 @@
 #include <unistd.h>
 #include <stdexcept>
 #include <sys/ioctl.h>
+#include <stdio.h>
 
 enum Parity {
     NONE,
@@ -121,11 +122,17 @@ public:
      * @returns Whether or not the Serial port is closed
      */
     bool is_closed();
+    
     /**
      * How many bytes are available to read?
      * @returns int: the number of bytes available to read.
      */
     int available();
+    
+    /**
+     * Prints data to the serial port as human-readable ASCII text.
+     */
+    void print(const char* format);
 
 private:
 
